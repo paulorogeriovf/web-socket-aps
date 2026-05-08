@@ -27,7 +27,6 @@ public class Servidor {
                     log("🔌 Nova conexão recebida: " + socket.getInetAddress().getHostAddress());
 
                     ClienteHandler handler = new ClienteHandler(socket);
-                    // NAO adiciona aqui — o handler so entra na lista apos se identificar
                     new Thread(handler).start();
                 }
             } catch (IOException e) {
@@ -42,7 +41,7 @@ public class Servidor {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
-        // Painel de topo
+        // painel de topo
         JPanel topo = new JPanel(new BorderLayout());
         topo.setBackground(new Color(15, 40, 30));
         topo.setBorder(BorderFactory.createEmptyBorder(12, 16, 12, 16));
@@ -58,7 +57,7 @@ public class Servidor {
         topo.add(titulo, BorderLayout.WEST);
         topo.add(statusLabel, BorderLayout.EAST);
 
-        // Área de log
+        // log
         logArea = new JTextArea();
         logArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
         logArea.setBackground(new Color(10, 25, 18));
@@ -70,7 +69,7 @@ public class Servidor {
         JScrollPane scroll = new JScrollPane(logArea);
         scroll.setBorder(BorderFactory.createLineBorder(new Color(30, 80, 50), 1));
 
-        // Rodapé
+        // rodape
         JPanel rodape = new JPanel(new BorderLayout());
         rodape.setBackground(new Color(15, 40, 30));
         rodape.setBorder(BorderFactory.createEmptyBorder(8, 16, 8, 16));
@@ -114,14 +113,14 @@ public class Servidor {
         );
     }
 
-    // ─── Registro ─────────────────────────────────────────────────
+    // registra um novo cliente na lista e atualiza o status
 
     public static void registrarCliente(ClienteHandler c) {
         clientes.add(c);
         atualizarStatus();
     }
 
-    // ─── Broadcast ────────────────────────────────────────────────
+    // broadcast de mensagens para todos os clientes, exceto o remetente (para evitar ecos)
 
     public static void broadcastMensagem(String msg, ClienteHandler remetente) {
         log("💬 " + msg);

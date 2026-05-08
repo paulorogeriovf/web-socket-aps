@@ -6,7 +6,7 @@ import java.net.*;
 
 public class Launcher {
 
-    // ── Paleta (mesma do ClienteGUI) ─────────────────────────────
+    // cores
     private static final Color BG_ESCURO      = new Color(13,  27,  20);
     private static final Color BG_PAINEL      = new Color(20,  40,  30);
     private static final Color VERDE_PRIMARIO = new Color(52,  199, 120);
@@ -15,7 +15,7 @@ public class Launcher {
     private static final Color TEXTO_APAGADO  = new Color(100, 140, 115);
     private static final Color ALERTA_DANGER  = new Color(255,  80,  80);
 
-    // ── Estado ───────────────────────────────────────────────────
+    // estados
     private static boolean servidorRodando = false;
     private static int clientesAbertos = 0;
     private static JLabel statusServidor;
@@ -56,7 +56,7 @@ public class Launcher {
         frame.setVisible(true);
     }
 
-    // ══ CABEÇALHO ════════════════════════════════════════════════
+    // cabecalho
 
     private static JPanel criarCabecalho() {
         JPanel painel = new JPanel() {
@@ -94,7 +94,7 @@ public class Launcher {
         return painel;
     }
 
-    // ══ CENTRO ═══════════════════════════════════════════════════
+    // centro laucher
 
     private static JPanel criarCentro() {
         JPanel painel = new JPanel();
@@ -121,7 +121,7 @@ public class Launcher {
         cardServidor.add(Box.createVerticalStrut(8));
         cardServidor.add(envolverCentro(statusServidor));
 
-        // ── Divisor ──────────────────────────────────────────────
+        // divisor
         JPanel divisor = new JPanel() {
             @Override protected void paintComponent(Graphics g) {
                 g.setColor(new Color(30, 65, 45));
@@ -132,7 +132,7 @@ public class Launcher {
         divisor.setPreferredSize(new Dimension(0, 24));
         divisor.setMaximumSize(new Dimension(Integer.MAX_VALUE, 24));
 
-        // ── Card Cliente ─────────────────────────────────────────
+        // Card do cliente
         JPanel cardCliente = criarCard(
             "👤  Cliente",
             "Abre uma nova janela de inspetor.\nPode abrir quantas quiser.",
@@ -160,7 +160,7 @@ public class Launcher {
         return painel;
     }
 
-    // ══ RODAPÉ ═══════════════════════════════════════════════════
+    // rodape
 
     private static JPanel criarRodape() {
         JPanel painel = new JPanel(new BorderLayout()) {
@@ -187,11 +187,11 @@ public class Launcher {
         return painel;
     }
 
-    // ══ AÇÕES ════════════════════════════════════════════════════
+    // acoes dos botoes
 
     private static void toggleServidor() {
         if (!servidorRodando) {
-            // Sobe o servidor na mesma JVM em thread separada
+            // subir o servidor na mesma JVM em thread separada
             Thread t = new Thread(() -> {
                 try {
                     Servidor.main(new String[]{});
@@ -205,10 +205,10 @@ public class Launcher {
             t.setDaemon(true);
             t.start();
 
-            // Aguarda um instante e verifica se subiu
+            // Aguarda e verifica se subiu
             new javax.swing.Timer(600, e -> {
                 try {
-                    // Testa conexão para confirmar que o servidor está no ar
+                    // testa  a conexão 
                     Socket teste = new Socket("localhost", 12345);
                     teste.close();
                     servidorRodando = true;
@@ -250,11 +250,11 @@ public class Launcher {
         clientesAbertos++;
         contadorClientes.setText(clientesAbertos + " cliente(s) aberto(s)");
 
-        // Chama mostrarLogin diretamente na EDT — sem thread extra que travava o dialog modal
+        // Chamar mostrarLogin do ClienteGUI para abrir a janela do cliente
         ClienteGUI.mostrarLogin();
     }
 
-    // ══ COMPONENTES AUXILIARES ════════════════════════════════════
+    // componentes 
 
     private static JPanel criarCard(String titulo, String descricao, Color corDestaque) {
         JPanel card = new JPanel() {
@@ -277,7 +277,7 @@ public class Launcher {
         labelTitulo.setForeground(corDestaque);
         labelTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        // Suporte a múltiplas linhas na descrição
+        // múltiplas linhas na descrição
         for (String linha : descricao.split("\n")) {
             JLabel l = new JLabel(linha);
             l.setFont(new Font("Dialog", Font.PLAIN, 11));

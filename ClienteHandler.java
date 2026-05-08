@@ -57,18 +57,17 @@ public class ClienteHandler implements Runnable {
     @Override
     public void run() {
         try {
-            // Timeout de 2s para receber o nome
-            // Rejeita silenciosamente conexoes de teste (ex: Launcher verificando se o servidor subiu)
+            // Timeout para receber o nome do cliente — evitando conexoes penduradas
             socket.setSoTimeout(2000);
             in  = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
 
             nome = in.readUTF();
 
-            // Desliga o timeout apos identificacao — comunicacao normal pode demorar
+            // Desliga o timeout apos identificacao do cliente
             socket.setSoTimeout(0);
 
-            // So agora entra na lista oficial de clientes
+            // entra na lista oficial de clientes
             Servidor.registrarCliente(this);
 
             Servidor.log("👤 Inspetor conectado: " + nome);
@@ -99,9 +98,8 @@ public class ClienteHandler implements Runnable {
             }
 
         } catch (Exception e) {
-            // Conexao encerrada ou timeout de identificacao — silencioso
+            // Conexao encerrada ou timeout de identificacao
         } finally {
-            // So loga e notifica se o cliente chegou a se identificar
             if (nome != null) {
                 Servidor.broadcastMensagem("🔕 " + nome + " saiu do sistema.", this);
                 Servidor.removerCliente(this);

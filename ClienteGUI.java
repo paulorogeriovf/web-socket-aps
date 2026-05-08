@@ -10,7 +10,7 @@ import java.util.*;
 
 public class ClienteGUI extends JFrame {
 
-    // ── Paleta ───────────────────────────────────────────────────
+    // Cores
     private static final Color BG_ESCURO      = new Color(13,  27,  20);
     private static final Color BG_PAINEL      = new Color(20,  40,  30);
     private static final Color VERDE_PRIMARIO = new Color(52,  199, 120);
@@ -22,7 +22,7 @@ public class ClienteGUI extends JFrame {
     private static final Color BUBBLE_PROPRIO = new Color(30,   90,  55);
     private static final Color BUBBLE_OUTRO   = new Color(25,   55,  40);
 
-    // ── Componentes ──────────────────────────────────────────────
+    // Componentes
     private JTextPane chat;
     private JTextField campo;
     private JButton btnEnviar, btnArquivo;
@@ -30,16 +30,14 @@ public class ClienteGUI extends JFrame {
     private JLabel labelDigitando;
     private JComboBox<String> comboAlerta;
 
-    // ── Rede ─────────────────────────────────────────────────────
+    // rede
     private DataInputStream in;
     private DataOutputStream out;
     private String nome;
     private Socket socket;
 
-    // ── Estado ───────────────────────────────────────────────────
-    private javax.swing.Timer timerDigitando;
 
-    // ─────────────────────────────────────────────────────────────
+    private javax.swing.Timer timerDigitando;
 
     public static void main(String[] args) {
         // CrossPlatform = Metal, que respeita cores customizadas
@@ -49,7 +47,7 @@ public class ClienteGUI extends JFrame {
         mostrarLogin();
     }
 
-    // ── Login via JDialog modal (não bloqueia EDT) ───────────────
+    // Login via JDialog modal 
     public static void mostrarLogin() {
         JDialog dialog = new JDialog((Frame) null, "Acesso — Secretaria Ambiental", true);
         dialog.setSize(400, 300);
@@ -95,7 +93,7 @@ public class ClienteGUI extends JFrame {
         topo.add(Box.createVerticalStrut(3));
         topo.add(sub);
 
-        // Formulário
+        // Formulario
         JPanel form = new JPanel(new GridBagLayout());
         form.setOpaque(false);
         form.setBorder(BorderFactory.createEmptyBorder(8, 32, 28, 32));
@@ -182,14 +180,14 @@ public class ClienteGUI extends JFrame {
         dialog.setVisible(true); // bloqueia corretamente (modal)
     }
 
-    // ── Construtor ───────────────────────────────────────────────
+    // contrutor
     public ClienteGUI(String nome) {
         this.nome = nome;
         construirTela();
         conectar();
     }
 
-    // ══ INTERFACE PRINCIPAL ══════════════════════════════════════
+    // interface
 
     private void construirTela() {
         setTitle("Monitoramento Ambiental · " + nome);
@@ -430,7 +428,7 @@ public class ClienteGUI extends JFrame {
         return rodape;
     }
 
-    // ══ CONEXÃO ══════════════════════════════════════════════════
+    // conexão e comunicacao
 
     private void conectar() {
         try {
@@ -462,7 +460,7 @@ public class ClienteGUI extends JFrame {
         }
     }
 
-    // ══ AÇÕES ════════════════════════════════════════════════════
+    // acoes
 
     private void enviarMsg() {
         try {
@@ -546,7 +544,7 @@ public class ClienteGUI extends JFrame {
         timerDigitando.start();
     }
 
-    // ══ UI — Mensagens ════════════════════════════════════════════
+    // mensagens
 
     private void adicionarMensagem(String msg, boolean proprio) {
         SwingUtilities.invokeLater(() -> {
@@ -612,7 +610,7 @@ public class ClienteGUI extends JFrame {
         }
     }
 
-    // ══ UI — Usuários ═════════════════════════════════════════════
+    // usuarios
 
     private void atualizarUsuarios(String lista) {
         SwingUtilities.invokeLater(() -> {
@@ -669,7 +667,7 @@ public class ClienteGUI extends JFrame {
         });
     }
 
-    // ══ Utilitários ══════════════════════════════════════════════
+    // utilitarios
 
     private static String hex(Color c) {
         return String.format("#%02x%02x%02x", c.getRed(), c.getGreen(), c.getBlue());
