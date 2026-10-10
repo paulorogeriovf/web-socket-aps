@@ -1,30 +1,30 @@
-# 🌊 Sistema de Monitoramento — Rio Tietê
+# Sistema de Monitoramento — Rio Tietê
 
-> Aplicação desktop de comunicação em tempo real para inspetores da Secretaria Estadual do Meio Ambiente, desenvolvida em Java com TCP/IP via Berkeley Sockets e interface gráfica Swing.
+> Aplicação desktop de comunicação em tempo real para inspetores da Secretaria Estadual do Meio Ambiente, desenvolvida em Java com TCP/IP via Berkeley Sockets e interface gráfica Swing para um projeto acadêmico .
 
 ---
 
-## 📋 Sobre o Projeto
+## Sobre o Projeto
 
 O sistema permite que múltiplos inspetores ambientais se conectem simultaneamente a um servidor central para trocar mensagens, enviar arquivos e emitir alertas de diferentes níveis de prioridade — tudo em tempo real, com interface visual temática voltada ao monitoramento do Rio Tietê.
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-- 💬 **Chat em tempo real** entre múltiplos inspetores conectados simultaneamente
-- 🔴 **Níveis de alerta** configuráveis por mensagem: Normal, Alerta e Urgente
-- 📁 **Transferência de arquivos** entre clientes (limite de 10 MB por arquivo)
-- 👥 **Lista de inspetores online** atualizada automaticamente em tempo real
-- ✍️ **Indicador "digitando..."** notifica os outros quando alguém está escrevendo
-- 😊 **Atalhos de emoji** automáticos (`:)` → 😊, `<3` → ❤️, etc.)
-- 🔔 **Notificações de entrada e saída** de inspetores no sistema
-- 🖥️ **Launcher integrado** para iniciar servidor e abrir múltiplos clientes pela mesma interface
-- 📋 **Log do servidor** com timestamps e botão para limpar
+-  **Chat em tempo real** entre múltiplos inspetores conectados simultaneamente
+-  **Níveis de alerta** configuráveis por mensagem: Normal, Alerta e Urgente
+-  **Transferência de arquivos** entre clientes (limite de 10 MB por arquivo)
+-  **Lista de inspetores online** atualizada automaticamente em tempo real
+-  **Indicador "digitando..."** notifica os outros quando alguém está escrevendo
+-  **Atalhos de emoji** automáticos (`:)` → 😊, `<3` → ❤️, etc.)
+-  **Notificações de entrada e saída** de inspetores no sistema
+-  **Launcher integrado** para iniciar servidor e abrir múltiplos clientes pela mesma interface
+-  **Log do servidor** com timestamps e botão para limpar
 
 ---
 
-## 🗂️ Estrutura dos Arquivos
+## Estrutura dos Arquivos
 
 ```
 ├── Launcher.java        # Ponto de entrada — gerencia servidor e clientes
@@ -35,7 +35,7 @@ O sistema permite que múltiplos inspetores ambientais se conectem simultaneamen
 
 ---
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 
@@ -63,7 +63,7 @@ O **Launcher** é o único ponto de entrada. A partir dele:
 
 ---
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 ```
 ┌─────────────┐        TCP/IP         ┌──────────────────┐
@@ -82,7 +82,7 @@ O **Launcher** é o único ponto de entrada. A partir dele:
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 | Tecnologia | Uso |
 |---|---|
@@ -94,7 +94,7 @@ O **Launcher** é o único ponto de entrada. A partir dele:
 
 ---
 
-## 📡 Protocolo de Comunicação
+## Protocolo de Comunicação
 
 As mensagens trocadas entre cliente e servidor seguem um protocolo simples baseado em tipo:
 
@@ -109,7 +109,7 @@ Na conexão, o cliente envia imediatamente seu nome antes de qualquer outro dado
 
 ---
 
-## 📸 Interface
+## Interface
 
 | Launcher | Servidor | Cliente |
 |---|---|---|
@@ -117,6 +117,6 @@ Na conexão, o cliente envia imediatamente seu nome antes de qualquer outro dado
 
 ---
 
-## 📄 Licença
+## Licença
 
 Este projeto foi desenvolvido para fins acadêmicos e de demonstração técnica.
