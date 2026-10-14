@@ -7,20 +7,34 @@
 ## Sobre o Projeto
 
 O sistema permite que múltiplos inspetores ambientais se conectem simultaneamente a um servidor central para trocar mensagens, enviar arquivos e emitir alertas de diferentes níveis de prioridade — tudo em tempo real, com interface visual temática voltada ao monitoramento do Rio Tietê.
+<p align="center">
+  <img src="assets/tela inicial.png"">
+</p>
 
 ---
 
 ## Funcionalidades
 
 -  **Chat em tempo real** entre múltiplos inspetores conectados simultaneamente
+<p align="center">
+  <img src="assets/chat.png"">
+</p>
+
 -  **Níveis de alerta** configuráveis por mensagem: Normal, Alerta e Urgente
 -  **Transferência de arquivos** entre clientes (limite de 10 MB por arquivo)
+<p align="center">
+  <img src="assets/chat_img.png"">
+</p>
+
 -  **Lista de inspetores online** atualizada automaticamente em tempo real
 -  **Indicador "digitando..."** notifica os outros quando alguém está escrevendo
 -  **Atalhos de emoji** automáticos (`:)` → 😊, `<3` → ❤️, etc.)
 -  **Notificações de entrada e saída** de inspetores no sistema
 -  **Launcher integrado** para iniciar servidor e abrir múltiplos clientes pela mesma interface
 -  **Log do servidor** com timestamps e botão para limpar
+<p align="center">
+  <img src="assets/logs.png"">
+</p>
 
 ---
 
